@@ -1,37 +1,62 @@
 import React from 'react';
-import { VStack, Box, Image, Divider } from '@chakra-ui/react';
+import { Flex, Box, Image } from '@chakra-ui/react';
 import { FaHome, FaUsers, FaCog, FaChartBar, FaMoneyBill } from 'react-icons/fa';
-import CustomLink from '../customlink/CustomLink';
-import logo from '../../assets/logo-unicoin.png'
+import CustomMenu from '../custommenu/CustomMenu';
+import Logo from '../../assets/logo-unicoin.png';
 
 const Sidebar: React.FC = () => {
+  const menuItems = [
+    {
+      icon: FaHome,
+      label: "Home",
+      items: [{ label: "Overview", to: "/" }, { label: "Stats", to: "/dashboard/stats" }]
+    },
+    {
+      icon: FaCog,
+      label: "Contact",
+      items: [{ label: "Email", to: "/settings/email" }, { label: "Phone", to: "/settings/phone" }]
+    },
+    {
+      icon: FaChartBar,
+      label: "Departments",
+      items: [{ label: "Sales", to: "/reports/sales" }, { label: "HR", to: "/reports/hr" }]
+    },
+    {
+      icon: FaMoneyBill,
+      label: "Social Media",
+      items: [{ label: "Twitter", to: "/transactions/twitter" }, { label: "Facebook", to: "/transactions/facebook" }]
+    }
+  ];
+
   return (
     <Box
       as="aside"
-      bg="#080A0C"
+      bg="gray.900"
       color="white"
-      w="450px"
+      w="350px"
       minH="100vh"
       p={4}
+      position="fixed"
     >
-      {/* Logo en la parte superior */}
-      <Box mb={8} textAlign="center">
-        <Image
-          src={logo} // Reemplaza esto con la ruta de tu logo
-          alt="Unicoin Logo"
-          mb={4}
-        />
-
+      <Box pb={10}>
+        <Image src={Logo} alt="Unicoin Logo" />
       </Box>
-    <Divider w={'90%'} m={4} />
-      <VStack align="start" spacing={4}>
-        <CustomLink to="/dashboard" icon={FaHome} label="Dashboard" />
-        <CustomLink to="/users" icon={FaUsers} label="Users" />
-        <Divider w={'90%'} m={4} />
-        <CustomLink to="/settings" icon={FaCog} label="Settings" />
-        <CustomLink to="/reports" icon={FaChartBar} label="Reports" />
-        <CustomLink to="/transactions" icon={FaMoneyBill} label="Transactions" />
-      </VStack>
+
+      <Flex gap={1} direction={'column'}>
+        {menuItems.map((menu, index) => (
+          <CustomMenu key={index} icon={menu.icon} label={menu.label} items={menu.items} />
+        ))}
+
+        <CustomMenu
+          icon={FaUsers}
+          label="Users"
+          items={[
+            { label: "Admins", to: "/users/admins" },
+            { label: "Editors", to: "/users/editors" },
+            { label: "Viewers", to: "/users/viewers" }
+          ]}
+        />
+      </Flex>
     </Box>
   );
 };

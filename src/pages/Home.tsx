@@ -4,10 +4,9 @@ import { Heading, Text, Box, Button, Image, VStack } from '@chakra-ui/react';
 const Home: React.FC = () => {
   return (
     <Box
-      maxW="1400px"
+      maxW="700px"
       mx="auto"
       p={8}
-      textAlign="center"
     >
       {/* Sección del encabezado principal */}
       <Heading as="h1" size="2xl" mb={4}>

@@ -17,7 +17,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
       <Sidebar />
 
       {/* Contenido principal */}
-      <Box as="main" p="4" bg="gray.100" ml="450px" minW={'100%'}>
+      <Box as="main" p="4" bg="gray.50" ml="450px" minW={'100%'}>
         {children}
       </Box>
     </Grid>

@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import DashboardLayout from './layout/MainLayout';
+import Login from './pages/Login';
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
       </DashboardLayout>
     </Router>
